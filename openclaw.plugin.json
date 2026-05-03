@@ -1,0 +1,77 @@
+{
+  "id": "openclaw-memu",
+  "kind": "memory",
+  "uiHints": {
+    "serverUrl": {
+      "label": "memU Server URL",
+      "placeholder": "http://localhost:8000",
+      "help": "Where memU-server is listening (HTTP)"
+    },
+    "userId": {
+      "label": "User ID",
+      "placeholder": "willie",
+      "help": "Required scoping ID for memU multi-character pools"
+    },
+    "agentId": {
+      "label": "Agent ID",
+      "placeholder": "rei",
+      "help": "Optional secondary scoping (separate Rei-instance pools)"
+    },
+    "autoRecall": {
+      "label": "Auto-Recall",
+      "help": "Inject relevant memories before each turn (before_prompt_build)"
+    },
+    "autoCapture": {
+      "label": "Auto-Capture",
+      "help": "Memorize the just-completed exchange after each turn (agent_end)"
+    },
+    "recallTopK": {
+      "label": "Recall Top K",
+      "advanced": true,
+      "placeholder": "3"
+    },
+    "recallMaxChars": {
+      "label": "Recall Query Max Chars",
+      "advanced": true,
+      "placeholder": "1000"
+    },
+    "captureMaxChars": {
+      "label": "Capture Max Chars",
+      "advanced": true,
+      "placeholder": "500"
+    },
+    "recallTimeoutMs": {
+      "label": "Recall Timeout (ms)",
+      "advanced": true,
+      "placeholder": "15000"
+    },
+    "captureMaxMessagesPerTurn": {
+      "label": "Capture Max Messages/Turn",
+      "advanced": true,
+      "placeholder": "3"
+    },
+    "retrieveMethod": {
+      "label": "Retrieve Method",
+      "advanced": true,
+      "help": "rag = vector retrieval; llm = LLM-mediated"
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["serverUrl", "userId"],
+    "properties": {
+      "serverUrl": { "type": "string", "format": "uri" },
+      "userId": { "type": "string", "minLength": 1 },
+      "agentId": { "type": "string" },
+      "autoRecall": { "type": "boolean", "default": true },
+      "autoCapture": { "type": "boolean", "default": true },
+      "recallTopK": { "type": "integer", "minimum": 1, "maximum": 20, "default": 3 },
+      "recallMaxChars": { "type": "integer", "minimum": 100, "maximum": 10000, "default": 1000 },
+      "captureMaxChars": { "type": "integer", "minimum": 100, "maximum": 10000, "default": 500 },
+      "recallTimeoutMs": { "type": "integer", "minimum": 1000, "maximum": 60000, "default": 15000 },
+      "captureMaxMessagesPerTurn": { "type": "integer", "minimum": 1, "maximum": 50, "default": 3 },
+      "retrieveMethod": { "type": "string", "enum": ["rag", "llm"], "default": "rag" }
+    }
+  }
+}
