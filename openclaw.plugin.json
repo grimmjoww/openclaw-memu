@@ -5,25 +5,25 @@
     "serverUrl": {
       "label": "memU Server URL",
       "placeholder": "http://localhost:8000",
-      "help": "Where memU-server is listening (HTTP)"
+      "help": "Where memU-server is listening over HTTP"
     },
     "userId": {
       "label": "User ID",
       "placeholder": "willie",
-      "help": "Required scoping ID for memU multi-character pools"
+      "help": "Required primary scope for the memU memory pool"
     },
     "agentId": {
       "label": "Agent ID",
       "placeholder": "rei",
-      "help": "Optional secondary scoping (separate Rei-instance pools)"
+      "help": "Optional secondary scope for separating agent or runtime memory pools"
     },
     "autoRecall": {
       "label": "Auto-Recall",
-      "help": "Inject relevant memories before each turn (before_prompt_build)"
+      "help": "Retrieve and inject relevant memories through OpenClaw's memory prompt supplement"
     },
     "autoCapture": {
-      "label": "Auto-Capture",
-      "help": "Memorize the just-completed exchange after each turn (agent_end)"
+      "label": "Capture Helper Enabled",
+      "help": "Controls capture through memu_store and memu.memorize. Automatic post-turn capture is not wired in the current 5.x integration."
     },
     "recallTopK": {
       "label": "Recall Top K",
@@ -46,14 +46,14 @@
       "placeholder": "15000"
     },
     "captureMaxMessagesPerTurn": {
-      "label": "Capture Max Messages/Turn",
+      "label": "Capture Max Messages/Call",
       "advanced": true,
       "placeholder": "3"
     },
     "retrieveMethod": {
       "label": "Retrieve Method",
       "advanced": true,
-      "help": "rag = vector retrieval; llm = LLM-mediated"
+      "help": "rag = vector retrieval; llm = LLM-mediated retrieval"
     }
   },
   "configSchema": {
